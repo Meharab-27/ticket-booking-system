@@ -1,3 +1,4 @@
+--Users table
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY,
   full_name VARCHAR(100) NOT NULL,
@@ -33,6 +34,7 @@ CREATE TABLE matches (
   
   );
 
+--Bookings table
 CREATE TABLE bookings (
   booking_id SERIAL PRIMARY KEY,
   user_id INT NOT NULL
@@ -56,6 +58,8 @@ CREATE TABLE bookings (
   
   );
 
+  --Insert values to users
+
 INSERT INTO users (user_id, full_name, email, role, phone_number)
 VALUES
 (1, 'Tanvir Rahman', 'tanvir@mail.com', 'Football Fan', '+8801711111111'),
@@ -63,7 +67,7 @@ VALUES
 (3, 'Sajjad Rahman', 'sajjad@mail.com', 'Ticket Manager', '+8801733333333'),
 (4, 'Jannat Ara', 'jannat@mail.com', 'Football Fan', NULL);
 
-
+-- Insert values to matches
 INSERT INTO matches (match_id, fixture, tournament_category
   , base_ticket_price, match_status)
 VALUES
@@ -74,7 +78,7 @@ VALUES
 (105, 'Juventus vs Roma', 'Serie A', 80, 'Available');
 
 
-
+--Insert values to bookings
 
 INSERT INTO bookings (booking_id, user_id, match_id,
   seat_number, payment_status, total_cost)
@@ -129,6 +133,7 @@ FROM users u
 LEFT JOIN bookings b ON u.user_id = b.user_id;
 
 --Query6
+
 SELECT booking_id, match_id, total_cost
 FROM bookings
 WHERE total_cost > (
@@ -136,6 +141,7 @@ WHERE total_cost > (
 );
 
 --Query7
+
 SELECT match_id, fixture, base_ticket_price
 FROM matches
 ORDER BY base_ticket_price DESC
