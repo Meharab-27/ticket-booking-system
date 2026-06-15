@@ -34,7 +34,7 @@ CREATE TABLE matches (
   
   );
 
-
+--bookings table
 CREATE TABLE bookings (
   booking_id SERIAL PRIMARY KEY,
   user_id INT NOT NULL
